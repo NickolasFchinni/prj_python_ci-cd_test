@@ -1,0 +1,25 @@
+name: Validador CSV - CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+
+      - name: Instalar pytest
+        run: pip install pytest
+
+      - name: Rodar testes
+        run: python -m pytest
